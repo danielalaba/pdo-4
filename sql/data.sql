@@ -12,3 +12,4 @@ CREATE TABLE reserved_pc_parts (
     part_name VARCHAR(100),
     category VARCHAR(50),
     brand VARCHAR(50),
+)

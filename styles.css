@@ -9,3 +9,9 @@ input {
 table, th, td {
 	border:1px solid black;
 }
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+}
+

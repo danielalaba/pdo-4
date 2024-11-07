@@ -1,5 +1,11 @@
-<?php require_once 'core/dbConfig.php'; ?>
-<?php require_once 'core/models.php'; ?>
+<?php
+require_once 'core/models.php';
+require_once 'core/handleForms.php';
+
+if (!isset($_SESSION['username'])) {
+	header("Location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +15,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome To Reserved PC Parts Management System. Add new Customers!</h1>
+    <div class="header">
+        <div>
+            <?php if (isset($_SESSION['message'])) { ?>
+		        <h1 style="color: red;"><?php echo $_SESSION['message']; ?></h1>
+	        <?php } unset($_SESSION['message']); ?>
+	        <?php if (isset($_SESSION['username'])) { ?>
+		        <h1>Hello there!! <?php echo $_SESSION['username']; ?></h1>
+		        <a href="core/handleForms.php?logoutAUser=1">Logout</a>
+	        <?php } else { echo "<h1>No user logged in</h1>";}?>
+        </div>
+        <div class="h-text">
+            <h1>Welcome To Reserved PC Parts Management System. Add new Customers!</h1>
+        </div>
+    </div>
     <form action="core/handleForms.php" method="POST">
         <p>
             <label for="customer_name">Customer Name</label>
